@@ -1,5 +1,5 @@
 #ifndef PLAN_H
-#define PLAN_H_
+#define PLAN_H
 #pragma once
 #include <string>
 #include <iostream>
@@ -49,11 +49,11 @@ class Plan {
             return priority;
         }
 
-        string getTitle() {
+        const string getTitle() {
             return title;
         }
 
-        string getNote() {
+        const string getNote() {
             return note;
         }
 

@@ -9,16 +9,25 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    PlanContainer.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    monthlyviewwindow.cpp
 
 HEADERS += \
-    mainwindow.h
+    Plan.h \
+    PlanContainer.h \
+    Scheduler.h \
+    mainwindow.h \
+    monthlyviewwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    monthlyviewwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
