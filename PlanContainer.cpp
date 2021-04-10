@@ -123,19 +123,19 @@ void PlanContainer::removePlan(const Plan begonThot) {
 void PlanContainer::createPlan(int month, int day, int year, int priority, string ti, string description){
     int userInput = 0;
     type pT = Reminder;    //Check how to do this planType pT <-- FIXED: pT will be radio buttons with Reminder selected at start
-    cout << "Would this be a reminder or an event? Type 1 for reminder, Type 2 for event" << endl;;
-    cin >> userInput;
-    cin.clear();
-    switch(userInput) {
-        case 1: pT = Reminder;
-            break;
-        case 2: pT = Event;
-            break;
-        case 3:
-            break;
-        default: cout << "Invalid. Try again." << endl;
-            break;
-    }
+//    cout << "Would this be a reminder or an event? Type 1 for reminder, Type 2 for event" << endl;;
+//    cin >> userInput;
+//    cin.clear();
+//    switch(userInput) {
+//        case 1: pT = Reminder;
+//            break;
+//        case 2: pT = Event;
+//            break;
+//        case 3:
+//            break;
+//        default: cout << "Invalid. Try again." << endl;
+//            break;
+//    }
     Plan p1(pT, month, day, year, priority, ti, description); //fix to work with plan.h <-- FIXED
     // planList.at(day-1).push_back(p1);
     planList.at(day-1).push_back(p1);
@@ -144,8 +144,10 @@ void PlanContainer::createPlan(int month, int day, int year, int priority, strin
 void PlanContainer::printAllPlans() {
     for (unsigned int i = 0; i < planList.size(); i++) {
         for (unsigned int j = 0; j < planList[i].size(); j++) {
-            planList[i][j].printPlan();
-            cout << endl;
+            if (!planList[i].size()-1 < j) {
+                planList[i][j].printPlan();
+                cout << endl;
+            }
         }
     }
 }

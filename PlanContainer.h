@@ -20,7 +20,7 @@ class PlanContainer : public Plan {
         void editPlans(string, int);
         unsigned getSize();
         //Plan checkPlan();
-    private:
+    protected:
         vector<vector<Plan>> planList;
         int size;
         void sortPlan();
