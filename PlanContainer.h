@@ -19,8 +19,9 @@ class PlanContainer : public Plan {
         void removePlan(const Plan begonThot);
         void editPlans(string, int);
         unsigned getSize();
+        vector<Plan> getDayVect(int);
         //Plan checkPlan();
-    protected:
+    private:
         vector<vector<Plan>> planList;
         int size;
         void sortPlan();

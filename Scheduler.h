@@ -3,7 +3,6 @@
 #include<iostream>
 #include <fstream>
 #include "PlanContainer.h"
-#include <QDebug>
 
 //this will be overarching class that does general stuff and prints menus
 //also will be the one checking validity
@@ -14,34 +13,24 @@ public:
     bool dateIsEqual(Plan& lhs, Plan& rhs);
     Plan findPlan(const Plan& temp); //if say gui lets you click on a plan
     vector<Plan> findAllPlans(int m, int d, int y);
-
-    void printYearPlans() {
-        for (unsigned i = 0; i < sch.size(); i++) {
-            sch.at(i)->printAllPlans();
-        }
-    }
-    void resizer() {
-        qDebug() << sch.at(0)->getSize();
-    }
-    vector<PlanContainer*> getScheduler(){
+    vector<PlanContainer> getScheduler(){
         return sch;
     }
     void addScheduler(int month, int day, int year, int priority, string ti, string note){
-        qDebug() << sch.at(0);
-//                createPlan(month, day, year, priority, ti, note);
+        sch.at(month-1).createPlan(month, day, year, priority, ti, note);
     }
     void readFile(){
         ifstream inputStream;
         string fileName = "Saver.txt";
         inputStream.open("Saver.txt");
-
+        
         string reader = "";
         string reader2 = "";
         int read1, read2, read3, read4;
         PlanContainer pc1;
         //reads in the format
         //int month, int day, int year, int priority, string ti, string note
-
+        
         while(inputStream >> read1){  //month
             inputStream >> read2;     //day
             inputStream >> read3;     //year
@@ -60,21 +49,21 @@ public:
         outputStream.open("Saver.txt");
         string reader = "";
         for(unsigned int k = 0; k < sch.size(); k++){
-            for(unsigned int i = 0; i < sch[k]->getSize(); i++){
-                for(unsigned int j = 0; j < sch[k]->getPlanList().at(i).size(); j++){
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getMonth();
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getDay();
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getYear();
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getPriority();
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getTitle();
-                    outputStream << sch[k]->getPlanList().at(i).at(j).getNote();
+            for(unsigned int i = 0; i < sch[k].getSize(); i++){
+                for(unsigned int j = 0; j < sch[k].getDayVect(i).size(); j++){
+                    outputStream << sch[k].getDayVect(i).at(j).getMonth();
+                    outputStream << sch[k].getDayVect(i).at(j).getDay();
+                    outputStream << sch[k].getDayVect(i).at(j).getYear();
+                    outputStream << sch[k].getDayVect(i).at(j).getPriority();
+                    outputStream << sch[k].getDayVect(i).at(j).getTitle();
+                    outputStream << sch[k].getDayVect(i).at(j).getNote();
                 }
             }
         }
         outputStream.close();
     }
 private:
-    vector<PlanContainer*> sch;
+    vector<PlanContainer> sch;
 
 };
 
