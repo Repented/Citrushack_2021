@@ -4,6 +4,7 @@
 #include "Scheduler.h"
 
 #include <QMainWindow>
+#include "modifywindow.h"
 #include "monthlyviewwindow.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,10 +24,12 @@ public:
 public slots:
     void openCalendar();
     void updatePlans();
+    void openModifyWindow();
 
 private:
     Ui::MainWindow *ui;
     Scheduler* sch = new Scheduler();
     MonthlyViewWindow* myMVWindow;
+    ModifyWindow* mowi;
 };
 #endif // MAINWINDOW_H

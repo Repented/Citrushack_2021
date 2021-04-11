@@ -10,20 +10,32 @@ CONFIG += c++11
 
 SOURCES += \
     PlanContainer.cpp \
+    addeventwindow.cpp \
+    editeventwindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    monthlyviewwindow.cpp
+    modifywindow.cpp \
+    monthlyviewwindow.cpp \
+    removeeventwindow.cpp
 
 HEADERS += \
     Plan.h \
     PlanContainer.h \
     Scheduler.h \
+    addeventwindow.h \
+    editeventwindow.h \
     mainwindow.h \
-    monthlyviewwindow.h
+    modifywindow.h \
+    monthlyviewwindow.h \
+    removeeventwindow.h
 
 FORMS += \
+    addeventwindow.ui \
+    editeventwindow.ui \
     mainwindow.ui \
-    monthlyviewwindow.ui
+    modifywindow.ui \
+    monthlyviewwindow.ui \
+    removeeventwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

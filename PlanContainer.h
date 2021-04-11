@@ -14,7 +14,7 @@ class PlanContainer : public Plan {
         //~PlanContainer();
         vector<vector<Plan>> getPlanList(){ return planList; }
         const Plan getPlan(string, int);
-        void createPlan(int month, int day, int year, int priority, string ti, string description);
+        void createPlan(type, int month, int day, int year, int priority, string ti, string description);
         void printAllPlans();
         void removePlan(const Plan begonThot);
         void editPlans(string, int);

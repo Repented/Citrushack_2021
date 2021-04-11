@@ -12,6 +12,7 @@ MainWindow::MainWindow(Scheduler* sche, QWidget *parent)
     ui->setupUi(this);
     connect(ui->openCalendarButton, SIGNAL(clicked()), this, SLOT(openCalendar()));
     connect(ui->updateReminderButton, SIGNAL(clicked()), this, SLOT(updatePlans()));
+    connect(ui->modify, SIGNAL(clicked()), this, SLOT(openModifyWindow()));
 }
 
 MainWindow::~MainWindow()
@@ -33,4 +34,9 @@ void MainWindow::openCalendar() {
 void MainWindow::updatePlans() {
     //TODO: make it work ig
     //sch->findAllPlans(1,2,3);
+}
+
+void MainWindow::openModifyWindow(){
+    mowi = new ModifyWindow(sch, this);
+    mowi->show();
 }

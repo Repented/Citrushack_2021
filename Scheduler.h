@@ -16,8 +16,8 @@ public:
     vector<PlanContainer> getScheduler(){
         return sch;
     }
-    void addScheduler(int month, int day, int year, int priority, string ti, string note){
-        sch.at(month-1).createPlan(month, day, year, priority, ti, note);
+    void addScheduler(type tP, int month, int day, int year, int priority, string ti, string note){
+        sch.at(month-1).createPlan(tP,month, day, year, priority, ti, note);
     }
     void readFile(){
         ifstream inputStream;
@@ -38,7 +38,7 @@ public:
             inputStream >> reader;    //ti
             inputStream >> reader2;   //note
 
-           addScheduler(read1, read2, read3, read4, reader, reader2);
+           //addScheduler(read1, read2, read3, read4, reader, reader2);
 
         }
         inputStream.close();
