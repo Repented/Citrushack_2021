@@ -117,10 +117,12 @@ void PlanContainer::removePlan(const Plan begonThot) {
         qDebug() << QString::number(index);
         qDebug() << QString::number(planList.size());
         for (it2 = planList[index].begin(); it2 != planList[index].end(); it2++) {
-               qDebug() << planList[index].size();
             if (*it2 == begonThot) {
                 it2 = planList[index].erase(it2);
-                it2++;
+                if (it2 != planList[index].end()) {
+                    it2++;
+                }
+                return;
             }
         }
     }
