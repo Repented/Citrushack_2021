@@ -9,19 +9,27 @@ class PlanContainer : public Plan {
     public:
         PlanContainer(int size = 31) {
             planList.resize(size);
+            vector<Plan> dummy = vector<Plan>();
+            for(unsigned i = 0; i < planList.size();i++) {
+                planList.at(i) = dummy;
+            }
         };
         PlanContainer(vector<vector<Plan>>);
         //~PlanContainer();
         vector<vector<Plan>> getPlanList(){ return planList; }
         const Plan getPlan(string, int);
-        void createPlan(int month, int day, int year, int priority, string ti, string description);
-        void printAllPlans();
+        void createPlan(type pT, int month, int day, int year, int priority, string ti, string description);
+        vector<QString> printAllPlans();
         void removePlan(const Plan begonThot);
-        void editPlans(string, int);
+
+        vector<Plan> getDayVect(int dayy){
+            return planList.at(dayy-1);
+        }
+
+        void editPlans(Plan, Plan);
         unsigned getSize();
-        vector<Plan> getDayVect(int);
         //Plan checkPlan();
-    private:
+    protected:
         vector<vector<Plan>> planList;
         int size;
         void sortPlan();

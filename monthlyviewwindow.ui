@@ -16,6 +16,66 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Date</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDateEdit" name="dateEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="setDateButton">
+        <property name="text">
+         <string>Set</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0">
@@ -87,8 +147,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Wednesday</string>
+           <string>WEDNESDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -127,8 +203,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Sunday</string>
+           <string>SUNDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -200,8 +292,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Saturday</string>
+           <string>SATURDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -247,8 +355,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Thursday</string>
+           <string>THURSDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -294,8 +418,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Friday</string>
+           <string>FRIDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -445,8 +585,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Monday</string>
+           <string>MONDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -687,8 +843,24 @@
             <height>0</height>
            </size>
           </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
           <property name="text">
-           <string>Tuesday</string>
+           <string>TUESDAY</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

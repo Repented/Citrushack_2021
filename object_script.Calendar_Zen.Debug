@@ -1,0 +1,14 @@
+debug/PlanContainer.o
+debug/addeventwindow.o
+debug/editeventwindow.o
+debug/eventviewerdialog.o
+debug/main.o
+debug/mainwindow.o
+debug/modifywindow.o
+debug/monthlyviewwindow.o
+debug/moc_addeventwindow.o
+debug/moc_editeventwindow.o
+debug/moc_eventviewerdialog.o
+debug/moc_mainwindow.o
+debug/moc_modifywindow.o
+debug/moc_monthlyviewwindow.o

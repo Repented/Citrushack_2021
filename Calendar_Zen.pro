@@ -10,19 +10,31 @@ CONFIG += c++11
 
 SOURCES += \
     PlanContainer.cpp \
+    addeventwindow.cpp \
+    editeventwindow.cpp \
+    eventviewerdialog.cpp \
     main.cpp \
     mainwindow.cpp \
+    modifywindow.cpp \
     monthlyviewwindow.cpp
 
 HEADERS += \
     Plan.h \
     PlanContainer.h \
     Scheduler.h \
+    addeventwindow.h \
+    editeventwindow.h \
+    eventviewerdialog.h \
     mainwindow.h \
+    modifywindow.h \
     monthlyviewwindow.h
 
 FORMS += \
+    addeventwindow.ui \
+    editeventwindow.ui \
+    eventviewerdialog.ui \
     mainwindow.ui \
+    modifywindow.ui \
     monthlyviewwindow.ui
 
 # Default rules for deployment.
@@ -30,4 +42,5 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    save.txt

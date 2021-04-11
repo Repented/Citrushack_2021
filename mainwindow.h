@@ -23,10 +23,12 @@ public:
 public slots:
     void openCalendar();
     void updatePlans();
+    void saveQuit();
 
 private:
     Ui::MainWindow *ui;
     Scheduler* sch = new Scheduler();
     MonthlyViewWindow* myMVWindow;
+    void closeEvent(QCloseEvent *event);
 };
 #endif // MAINWINDOW_H
