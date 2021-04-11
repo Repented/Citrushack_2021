@@ -76,50 +76,64 @@ int MonthlyViewWindow::conway(int m, int y) {
 void MonthlyViewWindow::dayLayout() {
 //    int startingIndex = conway(month,1,year);
     int count = 1;
-    qDebug() << ui->gridLayout->rowCount();
-    qDebug() << ui->gridLayout->columnCount();
-    QLayoutItem* item = ui->gridLayout->itemAtPosition(1,3);
-    if (!item || !item->widget()) {
-        qDebug() << "Not real";
-    } else {
-        QPushButton* button = qobject_cast<QPushButton*>(item->widget());
-        if (button) {
-            qDebug() <<"Is a button";
-            button->setText(QString::number(1));
+    QFont font;
+//    int index = conwayhelper(QDate::currentDate().month(),1,QDate::currentDate().year()); //requires me to know what month and year I am in
+    for (int i = 0; i < ui->gridLayout->rowCount(); i++) {//TODO: FIND starting index through conway
+        for (int j = 0; j < ui->gridLayout->columnCount(); j++) {
+            if (i == 1 && j == conway(QDate::currentDate().month(),QDate::currentDate().year())) {
+                QLayoutItem* item = ui->gridLayout->itemAtPosition(1,j);
+                if (!item || !item->widget()) {
+                    continue;
+                }
+                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+                if (button) {
+                    font = button->font();
+                    font.setPointSize(20);
+                    button->setFont(font);
+                    button->setText(QString::number(count));
+                    connect(button, SIGNAL(clicked()), this, SLOT(openModifyWindow(count)));
+                    count++;
+                }
+            } else if (i < 1) {
+                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
+                if (!item || !item->widget()) {
+                    continue;
+                }
+//                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+//                if (button) {
+//                    button->setText(QString::number(count));
+//                    count++;
+//                }
+            } else if (i == 1 && j < conway(QDate::currentDate().month(),QDate::currentDate().year())) {
+                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
+                if (!item || !item->widget()) {
+                    continue;
+                }
+                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+                if (button) {
+                    button->setEnabled(false);
+                }
+            } else {
+                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
+                if (!item || !item->widget()) {
+                    continue;
+                }
+                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
+                if (count > QDate().currentDate().daysInMonth()) {
+                    button->setEnabled(false);
+                } else {
+                    if (button) {
+                        font = button->font();
+                        font.setPointSize(20);
+                        button->setFont(font);
+                        button->setText(QString::number(count));
+                        connect(button, SIGNAL(clicked()), this, SLOT(openModifyWindow(count)));
+                        count++;
+                    }
+                }
+            }
         }
     }
-    qDebug() << conway(QDate::currentDate().month(),QDate::currentDate().year());
-//    int index = conwayhelper(QDate::currentDate().month(),1,QDate::currentDate().year()); //requires me to know what month and year I am in
-//    for (int i = 0; i < ui->gridLayout->rowCount(); i++) {//TODO: FIND starting index through conway
-//        for (int j = 0; j < ui->gridLayout->columnCount(); j++) {
-//            if (i == 1 && j == conway(QDate::currentDate().month(),QDate::currentDate().year())) {
-//                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
-//                if (!item || !item->widget()) {
-//                    continue;
-//                }
-//                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
-//                if (button) {
-//                    button->setText(QString::number(count));
-//                    count++;
-//                }
-//            } else if (i < 1) {
-//                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
-//                if (!item || !item->widget()) {
-//                    continue;
-//                }
-//            } else {
-//                QLayoutItem* item = ui->gridLayout->itemAtPosition(i,j);
-//                if (!item || !item->widget()) {
-//                    continue;
-//                }
-//                QPushButton* button = qobject_cast<QPushButton*>(item->widget());
-//                if (button) {
-//                    button->setText(QString::number(count));
-//                    count++;
-//                }
-//            }
-//        }
-//    }
 }
 
 MonthlyViewWindow::~MonthlyViewWindow()
@@ -130,4 +144,9 @@ MonthlyViewWindow::~MonthlyViewWindow()
 void MonthlyViewWindow::closeEvent(QCloseEvent* event) {
     myMain->enableOpenCalendarButton();
     event->accept();
+}
+
+void MonthlyViewWindow::openModifyWindow(int month) {
+    myModify = new ModifyWindow(sch, this);
+    myModify->show();
 }

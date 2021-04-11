@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 using namespace std;
+#include <QDebug>
 
 enum type { Reminder, Event };
 
@@ -98,13 +99,13 @@ class Plan {
 
         void printPlan() {
             if (planType == Reminder) {
-                cout << "Reminder on ";
+                qDebug() << "Reminder on ";
             } else {
-                cout << "Event on ";
+                qDebug() << "Event on ";
             }
-            cout << month << "/" << day << "/" << year << ": " << endl;
-            cout << "Title: " << getTitle() << endl;
-            cout << "Note: " << getNote() << endl;
+            qDebug() << QString::number(month) << "/" << QString::number(day) << "/" << QString::number(year) << ": ";
+            qDebug() << "Title: " << QString::fromStdString(getTitle());
+            qDebug() << "Note: " << QString::fromStdString(getNote());
         }
 };
 

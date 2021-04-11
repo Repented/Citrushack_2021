@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+#include <QDebug>
+
 PlanContainer::PlanContainer(vector<vector<Plan>> plans){
     planList = plans;
 }
@@ -27,9 +29,6 @@ unsigned PlanContainer::getSize(){
     return planList.size();
 }
 
-vector<Plan> PlanContainer::getDayVect(int dayy){
-    return planList.at(dayy-1);
-}
 
 void PlanContainer::editPlans(string titl, int day){ //TODO: change when turning this into GUI
     int userNum = 0;
@@ -115,40 +114,47 @@ void PlanContainer::removePlan(const Plan begonThot) {
 
     for (it1 = planList.begin(); it1 != planList.end(); it1++) {
         int index = it1 - planList.begin();
+        qDebug() << QString::number(index);
+        qDebug() << QString::number(planList.size());
         for (it2 = planList[index].begin(); it2 != planList[index].end(); it2++) {
+               qDebug() << planList[index].size();
             if (*it2 == begonThot) {
-                planList[index].erase(it2);
+                it2 = planList[index].erase(it2);
+                it2++;
             }
         }
     }
 }
 
 void PlanContainer::createPlan(int month, int day, int year, int priority, string ti, string description){
-    int userInput = 0;
     type pT = Reminder;    //Check how to do this planType pT <-- FIXED: pT will be radio buttons with Reminder selected at start
-    cout << "Would this be a reminder or an event? Type 1 for reminder, Type 2 for event" << endl;;
-    cin >> userInput;
-    cin.clear();
-    switch(userInput) {
-        case 1: pT = Reminder;
-            break;
-        case 2: pT = Event;
-            break;
-        case 3:
-            break;
-        default: cout << "Invalid. Try again." << endl;
-            break;
-    }
+//    cout << "Would this be a reminder or an event? Type 1 for reminder, Type 2 for event" << endl;;
+//    cin >> userInput;
+//    cin.clear();
+//    switch(userInput) {
+//        case 1: pT = Reminder;
+//            break;
+//        case 2: pT = Event;
+//            break;
+//        case 3:
+//            break;
+//        default: cout << "Invalid. Try again." << endl;
+//            break;
+//    }
     Plan p1(pT, month, day, year, priority, ti, description); //fix to work with plan.h <-- FIXED
     // planList.at(day-1).push_back(p1);
     planList.at(day-1).push_back(p1);
 }
 
 void PlanContainer::printAllPlans() {
+    qDebug() << planList.size();
     for (unsigned int i = 0; i < planList.size(); i++) {
         for (unsigned int j = 0; j < planList[i].size(); j++) {
-            planList[i][j].printPlan();
-            cout << endl;
+            qDebug() << planList[i].size();
+            if (!planList[i].empty() && j < planList[i].size()) {
+                planList[i][j].printPlan();
+                qDebug() << "";
+            }
         }
     }
 }
